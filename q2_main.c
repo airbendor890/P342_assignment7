@@ -16,7 +16,7 @@ int main(){
 	FILE* file1;
 	file1=fopen("q2_file1.txt","w");
 
-	RK4(&f,x_0,y_0,y1_0,x_n,h1,file1);
+	RK4(&f,x_0,y_0,y1_0,x_n,h1,file1,'r');/*r:write in file inside RK4 function*/
 	fclose(file1);
 
 	double h2=0.2;
