@@ -504,7 +504,7 @@ double shoot(double(*func)(double,double,double),double a,double y_a,double b,do
 	beta=RK4(func,a,y_a,z,b,h,fptr,'n');/*n :dont write in file*/
 	beta_z_l=beta;
 	beta_z_h=beta;
-	if(abs(beta-y_b)<0.001){
+	if(fabs(beta-y_b)<0.001){
 		return RK4(func,a,y_a,z,b,h,fptr,'r');/*r:write in file*/
 		
 	}
@@ -519,7 +519,6 @@ double shoot(double(*func)(double,double,double),double a,double y_a,double b,do
 			beta_z_l=beta;
 			/*lagrange interpolation*/
 			z=z_l+(z_h-z_l)*(y_b-beta_z_l)/(beta_z_h-beta_z_l);
-			z=(z_l*(beta_z_h-y_b)+z_h*(y_b-beta_z_l))/(beta_z_h-beta_z_l);
 			shoot(func,a,y_a,b,y_b,z,h,fptr);
 		}
 		else{
